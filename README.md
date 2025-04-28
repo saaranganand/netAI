@@ -1,10 +1,30 @@
 # netAI
 
 A closed-loop system that translates high-level network intents into validated P4_16 programs for the V1Model architecture, with automatic compilation, logic verification, and persistence.
-
-## Overview
-
 Uses an LLM to generate P4 code from natural language user-provided intent, verifies compilation of generated code with p4c in Docker, runs simple logic checks, and stores each program in a PostgreSQL database.
+
+## File Structure
+
+```bash
+netAI/
+├── src/
+│   ├── main.py           # prompt assembly & loop
+│   ├── llm_client.py     # LLM abstraction
+│   ├── compiler.py       # Docker-based p4c runner
+│   ├── logic.py          # logic/verifier
+│   └── db.py             # database
+├── prompts/              # instruction & example fragments
+│   ├── instructions.txt
+│   ├── example1.txt
+│   ├── example2.txt
+│   ├── example3.txt
+│   └── final.txt
+├── out/                  
+│   └── program.p4        # LLM-generated P4 code
+├── requirements.txt
+├── README.md
+└── .env                  # user-specific environment variables
+```
 
 ## Prerequisites
 
@@ -14,7 +34,7 @@ Uses an LLM to generate P4 code from natural language user-provided intent, veri
 - **PostgreSQL:** for storing generated programs
 - **Groq API key:** Available at https://console.groq.com/keys
 
-## Installation
+## Installation and setup
 
 1. **Clone the repo**
 
@@ -50,9 +70,7 @@ sudo -u postgres createuser netai_user --pwprompt
 sudo -u postgres createdb netai_db -O netai_user
 ```
 
-## Configuration
-
-Create a .env file in the project root with:
+6. Create a .env file in the project root with:
 ```env
 GROQ_API_KEY=groq_key_goes_here
 GROQ_MODEL=gemma2-9b-it
@@ -75,26 +93,3 @@ and enter your intent when prompted.
 - Compilation and logic-verifier results will be printed.
 
 - Each run is recorded in the `programs` table in the database.
-
-## Directory Structure
-
-```
-netAI/
-├── src/
-│   ├── main.py           # prompt assembly & loop
-│   ├── llm_client.py     # LLM abstraction
-│   ├── compiler.py       # Docker-based p4c runner
-│   ├── logic.py          # logic/verifier
-│   └── db.py             # database
-├── prompts/              # instruction & example fragments
-│   ├── instructions.txt
-│   ├── example1.txt
-│   ├── example2.txt
-│   ├── example3.txt
-│   └── final.txt
-├── out/                  
-│   └── program.p4        # LLM-generated P4 code
-├── requirements.txt
-├── README.md
-└── .env                  # user-specific environment variables
-```
