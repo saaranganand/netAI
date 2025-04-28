@@ -1,4 +1,5 @@
 import sys
+import os
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -10,7 +11,7 @@ from db import SessionLocal, init_db, Program
 
 load_dotenv()
 
-MAX_RETRIES = 3
+MAX_RETRIES = os.getenv("MAX_RETRIES", 3)
 PROMPT_DIR = Path(__file__).parent.parent / "prompts"
 
 
@@ -36,7 +37,8 @@ def main():
         "instructions.txt",
         "example1.txt",
         "example2.txt",
-        "example3.txt"
+        "example3.txt",
+        # "final.txt"
     ]
 
     template = load_prompt_pieces(prompt_files)
