@@ -75,6 +75,8 @@ sudo -u postgres createdb netai_db -O netai_user
 GROQ_API_KEY=groq_key_goes_here
 GROQ_MODEL=gemma2-9b-it
 
+MAX_RETRIES = x # Defaults to 3
+
 DATABASE_URL=postgresql+psycopg2://your_username_here:your_password_here@localhost/netai_db
 ```
 
