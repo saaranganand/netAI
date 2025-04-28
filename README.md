@@ -4,6 +4,8 @@ A closed-loop system that translates high-level network intents into validated P
 
 Uses an LLM to generate P4 code from natural language user-provided intent, verifies compilation of generated code with p4c in Docker, runs simple logic checks, and stores each program in a PostgreSQL database.
 
+If compilation errors occur, feedback is attached to the initial prompt and fed back to the LLM.
+
 ## File Structure
 
 ```bash
