@@ -1,7 +1,10 @@
 # netAI
 
 A closed-loop system that translates high-level network intents into validated P4_16 programs for the V1Model architecture, with automatic compilation, logic verification, and persistence.
+
 Uses an LLM to generate P4 code from natural language user-provided intent, verifies compilation of generated code with p4c in Docker, runs simple logic checks, and stores each program in a PostgreSQL database.
+
+If compilation errors occur, feedback is attached to the initial prompt and fed back to the LLM.
 
 ## File Structure
 
@@ -74,6 +77,8 @@ sudo -u postgres createdb netai_db -O netai_user
 ```env
 GROQ_API_KEY=groq_key_goes_here
 GROQ_MODEL=gemma2-9b-it
+
+MAX_RETRIES = x # Defaults to 3
 
 DATABASE_URL=postgresql+psycopg2://your_username_here:your_password_here@localhost/netai_db
 ```
