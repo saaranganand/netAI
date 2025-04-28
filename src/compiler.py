@@ -8,10 +8,11 @@ class P4Compiler:
 
     def compile(self, p4_file: str) -> (bool, str):
         file_name = os.path.basename(p4_file)
+        out_dir = os.path.dirname(p4_file)
 
         cmd = [
             "docker", "run", "--rm",
-            "-v", f"out:/mnt",
+            "-v", f"{out_dir}:/mnt",
             "p4lang/p4c:latest",
             "p4c", f"/mnt/{file_name}"
         ]

@@ -1,3 +1,5 @@
 docker
 python-dotenv
 groq
+SQLAlchemy
+psycopg2-binary
