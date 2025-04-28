@@ -8,10 +8,10 @@ Uses an LLM to generate P4 code from natural language user-provided intent, veri
 ```bash
 netAI/
 ├── src/
-│   ├── main.py           # prompt assembly & loop
-│   ├── llm_client.py     # LLM abstraction
-│   ├── compiler.py       # Docker-based p4c runner
-│   ├── logic.py          # logic/verifier
+│   ├── main.py           # prompt assembly
+│   ├── llm_client.py     # LLM interface
+│   ├── compiler.py       # VRF1: Docker-based p4c compilation check
+│   ├── logic.py          # VRF2: logical/security verifier
 │   └── db.py             # database
 ├── prompts/              # instruction & example fragments
 │   ├── instructions.txt
