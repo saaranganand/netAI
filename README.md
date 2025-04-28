@@ -6,6 +6,8 @@ Uses an LLM to generate P4 code from natural language user-provided intent, veri
 
 If compilation errors occur, feedback is attached to the initial prompt and fed back to the LLM.
 
+<img src="diag.png" width="600">
+
 ## File Structure
 
 ```bash
