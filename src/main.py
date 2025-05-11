@@ -11,7 +11,7 @@ from db import SessionLocal, init_db, Program
 
 load_dotenv()
 
-MAX_RETRIES = os.getenv("MAX_RETRIES", 3)
+MAX_RETRIES = int(os.getenv("MAX_RETRIES", 3))
 PROMPT_DIR = Path(__file__).parent.parent / "prompts"
 
 
